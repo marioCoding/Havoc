@@ -13,15 +13,12 @@ async function getData() {
     characterName: charName.value,
     realm: realm.value
   };
-  /*
-   // Style request object properties so that the input text matches the API syntax
-   request.characterName.style.textTransform = "lowercase";
-   request.realm.style.textTransform = "lowercase";
-  */ 
 
   // fetch api
   let requestCharName = request.characterName;
   let requestRealmName = request.realm;
+  /* This code is making an API request to the Blizzard API to fetch data about a World of Warcraft
+  character's PvP statistics. */
   let url = `https://us.api.blizzard.com/profile/wow/character/${requestRealmName}/${requestCharName}/pvp-bracket/3v3?namespace=profile-us&locale=en_US&access_token=USbE88pUWi4SdNY3ImdYgsqOst8sqDSvTv`;
   let response = await fetch(url);
   let data = await response.json();
@@ -32,18 +29,20 @@ async function getData() {
     let nameData = await data.character.name;
     nameHeader.textContent = nameData;
     // Style container 1
-      nameHeader.innerHTML = "Name: ";
+      nameHeader.style.fontFamily = "warcraft, sans-serif";
       nameHeader.style.fontSize = "200%";
+      nameHeader.style.background = "#B0A59C";
       nameElement.style.fontSize = "150%";
 
     // Container Section 2 - Realm Name
-    const realmHeader = document.createElement("h3");
+    const realmHeader = document.createElement("h4");
     const realmElement = document.createElement("p");
     let realmData = await data.character.realm.slug;
     realmHeader.textContent = realmData;
     // Style container 2
-      realmHeader.innerHTML = "Realm name: ";
+      realmHeader.style.fontFamily = "warcraft, sans-serif";
       realmHeader.style.fontSize = "200%";
+      realmHeader.style.background = "#B0A59C";
       realmElement.style.fontSize = "150%";
       console.log("realmElement");
 
@@ -59,23 +58,40 @@ async function getData() {
     */ 
 
     // Container Section 4 - Rating
-    const ratingHeader = document.createElement("h3");
+    const ratingHeader = document.createElement("h4");
     const ratingElement = document.createElement("p");
     let ratingData = await data.rating;
     ratingElement.innerText = ratingData;
     // Style container 4
+    ratingHeader.innerHTML = "3v3 Rating: ";
+    ratingHeader.style.background = "#B0A59C";
+    ratingElement.style.background = "#B0A59C";
+    ratingElement.style.fontFamily = "warcraft, sans-serif";
+    ratingElement.style.fontSize = "150%";
 
     // Container Section 5 - Season Match Statistics
     const statsHeader = document.createElement("h3");
+    const statsElement1Title = document.createElement("h4");
     const statsElement1 = document.createElement("p");
+    const statsElement2Title = document.createElement("h4");
     const statsElement2 = document.createElement("p");
+    const statsElement3Title = document.createElement("h4");
     const statsElement3 = document.createElement("p");
     let gamesPlayed = await data.season_match_statistics.played;
     let gamesWon = await data.season_match_statistics.won;
     let gamesLost = await data.season_match_statistics.lost;
+    statsElement1Title.innerHTML = "Games played: ";
+    statsElement1Title.style.background = "#B0A59C";
     statsElement1.innerText = gamesPlayed;
+    statsElement1.style.background = "#B0A59C";
+    statsElement2Title.innerHTML = "Won: ";
+    statsElement2Title.style.background = "#B0A59C";
     statsElement2.innerText = gamesWon;
+    statsElement2.style.background = "#B0A59C"; 
+    statsElement3Title.innerHTML = "Lost: ";
+    statsElement3Title.style.background = "#B0A59C";
     statsElement3.innerText = gamesLost;
+    statsElement3.style.background = "#B0A59C";
     // Style container 5
 
     // make reference to the html containers where the info will be displayed
@@ -86,8 +102,11 @@ async function getData() {
     container.appendChild(realmElement);
     container.appendChild(ratingHeader);
     container.appendChild(ratingElement);
+    container.appendChild(statsElement1Title);
     container.appendChild(statsElement1);
+    container.appendChild(statsElement2Title);
     container.appendChild(statsElement2);
+    container.appendChild(statsElement3Title);
     container.appendChild(statsElement3);
 
   } catch {
