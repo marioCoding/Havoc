@@ -26,12 +26,12 @@ background: #FDFCFD
 
 /* main */
 main {
-  margin: 2% auto;
+  margin: 0 auto;
   background: #E0E6E0;
 }
 .main-header {
   background: #E0E6E0;
-  margin: 2%;
+  margin: 2% 0;
   text-align: center;
   font-family: 'warcraft', sans-serif;
   display: flex;
@@ -48,18 +48,22 @@ h2 {
   border-radius: 25px;
   background: #9CA6B0;
 }
+/* Article 1 */
 .container {
   display: flex;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   margin: auto;
   background-color: #B0A59C;
   border: 1px solid #000;
+  border-radius: 25px;
   width: 50%;
   height: 50vh;
 }
 form {
+  font-size: 105%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -68,7 +72,6 @@ form {
 }
 .charName, .realmName {
   background: #B0A59C;
-
 }
 .btn1 {
   background: #9CA6B0;
@@ -77,7 +80,37 @@ form {
   border-style: solid 1px #000;
   border-radius: 25px;
   width: 25%;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .btn1:hover {
   cursor: pointer;
+}
+/* Article 2 */
+.container2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #E0E6E0;
+  margin: 5%;
+}
+
+/* Article 3 */
+.container3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #E0E6E0;
+  margin: 2%;
+}
+
+/* Article 4 */
+.container4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #E0E6E0;
+  margin: 2%;
 }
