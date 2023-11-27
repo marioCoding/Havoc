@@ -2,6 +2,7 @@
 const container2 = document.querySelector(".container2");
 const container3 = document.querySelector(".container3");
 const container4 = document.querySelector(".container4");
+let accessToken = {};
 
 /* The code `document.addEventListener("DOMContentLoaded", () => { ... })` is adding an event listener
 to the document object. The event being listened for is the "DOMContentLoaded" event, which fires
@@ -10,6 +11,39 @@ document.addEventListener("DOMContentLoaded", () => {
   const btn = document.querySelector(".btn1");
   btn.addEventListener("click", getData);
 });
+
+/* To request access tokens, an application must make a POST request with the following multipart form 
+data to the token URI: grant_type=client_credentials.
+The application must pass basic HTTP auth credentials using the client_id as the user and 
+client_secret as the password.*/
+var clientId = 'a60c28e171464f5c83c3de5b3e68818f';
+var clientSecret = 'YIoaEm3yAfA8yAp5KYsG8qfi2Omve38B';
+
+// Encode the client credentials
+var credentials = btoa(clientId + ':' + clientSecret);
+
+// Set up the AJAX request
+$.ajax({
+  url: 'https://oauth.battle.net/token',
+  type: 'POST',
+  headers: {
+    'Authorization': 'Basic ' + credentials,
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
+  data: {
+    'grant_type': 'client_credentials'
+  },
+  success: function(response) {
+    // Handle the successful response
+    console.log(response);
+    accessToken = response.access_token;
+  },
+  error: function(error) {
+    // Handle the error
+    console.error(error);
+  }
+});
+
 
 async function getData(event) {
 /* This code is grabbing the values entered in the HTML form fields with the IDs "charName" and
@@ -27,7 +61,7 @@ async function getData(event) {
 /*  This code is making an API request to the Blizzard API to fetch data about a World of
   Warcraft character's character appearance */
       
-      let url0 = `https://us.api.blizzard.com/profile/wow/character/${requestRealmName}/${requestCharName}/appearance?namespace=profile-us&locale=en_US&access_token=USXKXQSiqHxN6R39kxn3plUh5QWh3VFkio`;
+      let url0 = `https://us.api.blizzard.com/profile/wow/character/${requestRealmName}/${requestCharName}/appearance?namespace=profile-us&locale=en_US&access_token=${accessToken}`;
       let response0 = await fetch(url0);
       let appearanceData = await response0.json();
       let charClass;
@@ -40,7 +74,7 @@ async function getData(event) {
 /* This code is making an API request to the Blizzard API to fetch data about a World of
   Warcraft character's specialization. */
       
-      let url1 = `https://us.api.blizzard.com/profile/wow/character/${requestRealmName}/${requestCharName}/specializations?namespace=profile-us&locale=en_US&access_token=USXKXQSiqHxN6R39kxn3plUh5QWh3VFkio`;
+      let url1 = `https://us.api.blizzard.com/profile/wow/character/${requestRealmName}/${requestCharName}/specializations?namespace=profile-us&locale=en_US&access_token=${accessToken}`;
       let response1 = await fetch(url1);
       let specData = await response1.json()
 
@@ -58,7 +92,7 @@ async function getData(event) {
 /* This code is making an API request to the Blizzard API to fetch data about a World of Warcraft
   character's avatar. */
       
-    let url2 = `https://us.api.blizzard.com/profile/wow/character/${requestRealmName}/${requestCharName}/character-media?namespace=profile-us&locale=en_US&access_token=USXKXQSiqHxN6R39kxn3plUh5QWh3VFkio`;
+    let url2 = `https://us.api.blizzard.com/profile/wow/character/${requestRealmName}/${requestCharName}/character-media?namespace=profile-us&locale=en_US&access_token=${accessToken}`;
     let response2 = await fetch(url2);
     let avatarData = await response2.json();
     try {
@@ -98,7 +132,7 @@ async function getData(event) {
 /* This code is making an API request to the Blizzard API to fetch data about a World of
   Warcraft character's PvP statistics. */
   
-      let url3 = `https://us.api.blizzard.com/profile/wow/character/${requestRealmName}/${requestCharName}/pvp-bracket/3v3?namespace=profile-us&locale=en_US&access_token=USXKXQSiqHxN6R39kxn3plUh5QWh3VFkio`;
+      let url3 = `https://us.api.blizzard.com/profile/wow/character/${requestRealmName}/${requestCharName}/pvp-bracket/3v3?namespace=profile-us&locale=en_US&access_token=${accessToken}`;
       let response3 = await fetch(url3);
       let pvpData = await response3.json();
       try {
@@ -163,7 +197,7 @@ async function getData(event) {
           let s2 = spec2.toLowerCase();
           let s3 = spec3.toLowerCase();
 
-      let url4 = `https://us.api.blizzard.com/profile/wow/character/${requestRealmName}/${requestCharName}/pvp-bracket/shuffle-${cClass}-${s1}?namespace=profile-us&locale=en_US&access_token=USXKXQSiqHxN6R39kxn3plUh5QWh3VFkio`;
+      let url4 = `https://us.api.blizzard.com/profile/wow/character/${requestRealmName}/${requestCharName}/pvp-bracket/shuffle-${cClass}-${s1}?namespace=profile-us&locale=en_US&access_token=${accessToken}`;
       let response4 = await fetch(url4);
       let shuffleData1 = await response4.json();
       try {
@@ -201,7 +235,7 @@ async function getData(event) {
         err => console.error("oops!", err.message);
       }
       
-      let url5 = `https://us.api.blizzard.com/profile/wow/character/${requestRealmName}/${requestCharName}/pvp-bracket/shuffle-${cClass}-${s2}?namespace=profile-us&locale=en_US&access_token=USXKXQSiqHxN6R39kxn3plUh5QWh3VFkio`;
+      let url5 = `https://us.api.blizzard.com/profile/wow/character/${requestRealmName}/${requestCharName}/pvp-bracket/shuffle-${cClass}-${s2}?namespace=profile-us&locale=en_US&access_token=${accessToken}`;
       let response5 = await fetch(url5);
       let shuffleData2 = await response5.json();
       try {
@@ -238,7 +272,7 @@ async function getData(event) {
         err => console.error("oops!", err.message);
       }
       
-      let url6 = `https://us.api.blizzard.com/profile/wow/character/${requestRealmName}/${requestCharName}/pvp-bracket/shuffle-${cClass}-${s3}?namespace=profile-us&locale=en_US&access_token=USXKXQSiqHxN6R39kxn3plUh5QWh3VFkio`;
+      let url6 = `https://us.api.blizzard.com/profile/wow/character/${requestRealmName}/${requestCharName}/pvp-bracket/shuffle-${cClass}-${s3}?namespace=profile-us&locale=en_US&access_token=${accessToken}`;
       let response6 = await fetch(url6);
       let shuffleData3 = await response6.json();
       try {
@@ -277,13 +311,13 @@ async function getData(event) {
     
   /* This code is making an API request to the Blizzard API to fetch data about a World of Warcaft character's
   achievements */
-      let url7 = `https://us.api.blizzard.com/profile/wow/character/${requestRealmName}/${requestCharName}/achievements?namespace=profile-us&locale=en_US&access_token=USXKXQSiqHxN6R39kxn3plUh5QWh3VFkio`;   
+      let url7 = `https://us.api.blizzard.com/profile/wow/character/${requestRealmName}/${requestCharName}/achievements?namespace=profile-us&locale=en_US&access_token=${accessToken}`;   
       let response7 = await fetch(url7);
       let achievementsData = await response7.json();
 
   /* This code is making an API request to the Blizzard API to fetch data about a World of Warcraft
   character's personal rating history. */
-      let url8 = `https://us.api.blizzard.com/profile/wow/character/${requestRealmName}/${requestCharName}/achievements/statistics?namespace=profile-us&locale=en_US&access_token=USXKXQSiqHxN6R39kxn3plUh5QWh3VFkio`;
+      let url8 = `https://us.api.blizzard.com/profile/wow/character/${requestRealmName}/${requestCharName}/achievements/statistics?namespace=profile-us&locale=en_US&access_token=${accessToken}`;
       let response8 = await fetch(url8);
       let pvpHistoryData = await response8.json();
 }
