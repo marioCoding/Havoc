@@ -137,28 +137,35 @@ async function getData(event) {
       let pvpData = await response3.json();
       try {
         // Container Section 3 - Rating
-        const ratingHeader = document.createElement("h4");
+        const ratingHeader = document.createElement("h3");
         const ratingElement = document.createElement("p");
         let ratingData = await pvpData.rating;
         ratingElement.innerText = ratingData;
         // Style container 3
-        ratingHeader.innerHTML = "3v3 Rating: ";
-        ratingHeader.style.background = "#9CA6B0";
-        ratingElement.style.background = "#9CA6B0";
+        ratingHeader.innerHTML = "3v3 Rating";
+        ratingHeader.style.background = "#E0F6F6";
+        ratingHeader.style.padding = "15px 50px";
+        ratingHeader.style.margin = "2% 0";
+        ratingHeader.style.border = "2.5px solid black";
+        ratingHeader.style.borderRadius = "0 0 15px 15px";
         ratingElement.style.fontFamily = "warcraft, sans-serif";
         ratingElement.style.fontSize = "150%";
+        ratingElement.style.margin = "0 0 2% 0";
+      
+      
 
         // Container Section 4 - Season Match Statistics
-        const statsHeader = document.createElement("h3");
         const statsElement1Title = document.createElement("h4");
         const statsElement1 = document.createElement("p");
         const statsElement2Title = document.createElement("h4");
         const statsElement2 = document.createElement("p");
         const statsElement3Title = document.createElement("h4");
         const statsElement3 = document.createElement("p");
+        // Fetch API endpoints
         let gamesPlayed = await pvpData.season_match_statistics.played;
         let gamesWon = await pvpData.season_match_statistics.won;
         let gamesLost = await pvpData.season_match_statistics.lost;
+        // Add style to container 4
         statsElement1Title.innerHTML = "Games played: ";
         statsElement1Title.style.background = "#9CA6B0";
         statsElement1.innerText = gamesPlayed;
@@ -171,6 +178,7 @@ async function getData(event) {
         statsElement3Title.style.background = "#9CA6B0";
         statsElement3.innerText = gamesLost;
         statsElement3.style.background = "#9CA6B0";
+        statsElement3.style.marginBottom = "2%";
         // Style container 4
 
         // make reference to the html containers where the info will be displayed
@@ -183,7 +191,6 @@ async function getData(event) {
         container3.appendChild(statsElement2);
         container3.appendChild(statsElement3Title);
         container3.appendChild(statsElement3);
-
       } catch {
         err => console.error("oops!", err.message);
       }
@@ -202,8 +209,9 @@ async function getData(event) {
       let shuffleData1 = await response4.json();
       try {
         // Create HTML elements
-        const shuffleTitle1 = document.createElement("h4");
-        const shuffleRating1 = document.createElement("h3");
+        const soloShuffleTitle = document.createElement("h3");
+        const shuffleTitle1 = document.createElement("h3");
+        const shuffleRating1 = document.createElement("h4");
         const shufflePlayed1 = document.createElement("p");
         const shuffleWon1 = document.createElement("p");
         const shuffleLost1 = document.createElement("p");
@@ -215,6 +223,12 @@ async function getData(event) {
         let shuffleRoundsLost1 = await shuffleData1.season_round_statistics.lost;
         
         // Give HTML elements the JSON data
+        soloShuffleTitle.innerHTML = "Solo Shuffle Rating";
+        soloShuffleTitle.style.background = "#E0F6F6";
+        soloShuffleTitle.style.padding = "15px 50px";
+        soloShuffleTitle.style.margin = "2% 0";
+        soloShuffleTitle.style.border = "2.5px solid black";
+        soloShuffleTitle.style.borderRadius = "0 0 15px 15px";
         shuffleRating1.innerText = shuffleRatingSpec1;
         shufflePlayed1.innerText = shuffleRoundsPlayed1;
         shuffleWon1.innerText = shuffleRoundsWon1;
@@ -225,6 +239,7 @@ async function getData(event) {
 
         // Make reference to the HTML containers where the info will be displayed
         container4.innerHTML = " ";
+        container4.appendChild(soloShuffleTitle);
         container4.appendChild(shuffleTitle1);
         container4.appendChild(shuffleRating1);
         container4.appendChild(shufflePlayed1);
@@ -240,8 +255,8 @@ async function getData(event) {
       let shuffleData2 = await response5.json();
       try {
         // Create HTML elements
-        const shuffleTitle2 = document.createElement("h4");
-        const shuffleRating2 = document.createElement("h3");
+        const shuffleTitle2 = document.createElement("h3");
+        const shuffleRating2 = document.createElement("h4");
         const shufflePlayed2 = document.createElement("p");
         const shuffleWon2 = document.createElement("p");
         const shuffleLost2 = document.createElement("p");
@@ -277,8 +292,8 @@ async function getData(event) {
       let shuffleData3 = await response6.json();
       try {
         // Create HTML elements
-        const shuffleTitle3 = document.createElement("h4");
-        const shuffleRating3 = document.createElement("h3");
+        const shuffleTitle3 = document.createElement("h3");
+        const shuffleRating3 = document.createElement("h4");
         const shufflePlayed3 = document.createElement("p");
         const shuffleWon3 = document.createElement("p");
         const shuffleLost3 = document.createElement("p");
@@ -309,13 +324,13 @@ async function getData(event) {
         err => console.error("oops!", err.message);
       }
     
-  /* This code is making an API request to the Blizzard API to fetch data about a World of Warcaft character's
+  /* This code is making an HTTP request to the Blizzard API to fetch data about a World of Warcaft character's
   achievements */
       let url7 = `https://us.api.blizzard.com/profile/wow/character/${requestRealmName}/${requestCharName}/achievements?namespace=profile-us&locale=en_US&access_token=${accessToken}`;   
       let response7 = await fetch(url7);
       let achievementsData = await response7.json();
 
-  /* This code is making an API request to the Blizzard API to fetch data about a World of Warcraft
+  /* This code is making an HTTP request to the Blizzard API to fetch data about a World of Warcraft
   character's personal rating history. */
       let url8 = `https://us.api.blizzard.com/profile/wow/character/${requestRealmName}/${requestCharName}/achievements/statistics?namespace=profile-us&locale=en_US&access_token=${accessToken}`;
       let response8 = await fetch(url8);

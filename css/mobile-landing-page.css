@@ -1,0 +1,109 @@
+/* Colors:
+primary: #B0A59C
+secondary: #E0E6E0
+accent: #9CA6B0
+
+text: #0E0B0E
+background: #FDFCFD
+
+*/
+
+@import url('https://fonts.cdnfonts.com/css/warcraft');
+
+* {
+  margin: 0;
+  padding: 0;
+  background: #E0E6E0;
+}
+
+/* Design for iPhone 13 & 14 */
+@media screen and (max-width: 390px),
+       screen and (max-height: 844px) {
+
+  .page-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .header-img {
+    width: 349px;
+    height: 177px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: url(<path-to-image>), lightgray 50% / cover no-repeat;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  /* main */
+  main {
+    margin: 0 auto;
+    background: #E0E6E0;
+  }
+  .main-header {
+    background: #E0E6E0;
+    margin: 2% 0%;
+    text-align: center;
+    font-family: 'warcraft', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  h1 {
+    color: #000;
+    text-align: center;
+    font-family: Iowan Old Style;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  h2 {
+    width: 60%;
+    border-radius: 25px;
+    background: #9CA6B0;
+  }
+
+  /* Section 1 */
+
+
+  /* Article 1 */
+  .container1 {
+    display: flex;
+    font-family: Iowan Old Style;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    background-color: #B0A59C;
+    border: 1px solid #000;
+    border-radius: 25px;
+    width: 50%;
+    height: 25vh;
+    padding: 15px;
+  }
+  form {
+    font-size: 105%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #B0A59C;
+  }
+  .charName, .realmName {
+    background: #B0A59C;
+  }
+  .btn1 {
+    background: #9CA6B0;
+    display: block;
+    margin: 2% auto;
+    border-style: solid 1px #000;
+    border-radius: 25px;
+    width: 25%;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  .btn1:hover {
+    cursor: pointer;
+  }
+}
+
