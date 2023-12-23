@@ -58,6 +58,11 @@ async function getData(event) {
       let requestCharName = request.characterName;
       let requestRealmName = request.realm;
 
+// Scroll the webpage smoothly to the result containers after the submit button is clicked
+  $('html, body').animate({
+    scrollTop: $(container2).offset().top
+  }, 2000);
+
 /*  This code is making an API request to the Blizzard API to fetch data about a World of
   Warcraft character's character appearance */
       
