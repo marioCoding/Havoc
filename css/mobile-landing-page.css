@@ -2,108 +2,123 @@
 primary: #B0A59C
 secondary: #E0E6E0
 accent: #9CA6B0
-
 text: #0E0B0E
 background: #FDFCFD
-
 */
 
 @import url('https://fonts.cdnfonts.com/css/warcraft');
-
 * {
   margin: 0;
   padding: 0;
+  background: #FDFCFD;
+}
+/* page header */
+.page-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dragonflight-img {
+  width: 50%;
+  margin: 2%;
+}
+/* main */
+main {
+  margin: 0 auto;
   background: #E0E6E0;
 }
-
-/* Design for iPhone 13 & 14 */
-@media screen and (max-width: 390px),
-       screen and (max-height: 844px) {
-
-  .page-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .header-img {
-    width: 349px;
-    height: 177px;
-    flex-shrink: 0;
-    border-radius: 15px;
-    background: url(<path-to-image>), lightgray 50% / cover no-repeat;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  }
-
-  /* main */
-  main {
-    margin: 0 auto;
-    background: #E0E6E0;
-  }
-  .main-header {
-    background: #E0E6E0;
-    margin: 2% 0%;
-    text-align: center;
-    font-family: 'warcraft', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  h1 {
-    color: #000;
-    text-align: center;
-    font-family: Iowan Old Style;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-  }
-  h2 {
-    width: 60%;
-    border-radius: 25px;
-    background: #9CA6B0;
-  }
-
-  /* Section 1 */
-
-
-  /* Article 1 */
-  .container1 {
-    display: flex;
-    font-family: Iowan Old Style;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin: auto;
-    background-color: #B0A59C;
-    border: 1px solid #000;
-    border-radius: 25px;
-    width: 50%;
-    height: 25vh;
-    padding: 15px;
-  }
-  form {
-    font-size: 105%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background: #B0A59C;
-  }
-  .charName, .realmName {
-    background: #B0A59C;
-  }
-  .btn1 {
-    background: #9CA6B0;
-    display: block;
-    margin: 2% auto;
-    border-style: solid 1px #000;
-    border-radius: 25px;
-    width: 25%;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  }
-  .btn1:hover {
-    cursor: pointer;
-  }
+.main-header {
+  background: #E0E6E0;
+  margin: 2% 0;
+  margin: 2% 0%;
+  text-align: center;
+  font-family: 'warcraft', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+h1 {
+  background: #E0E6E0;
+  padding-top: 3%;
+}
+h2 {
+  width: 60%;
+  border-radius: 25px;
+  background: #9CA6B0;
 }
 
+/* Section 1 */
+
+
+/* Article 1 */
+.container {
+  display: flex;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+  background-color: #B0A59C;
+  border: 1px solid #000;
+  border-radius: 25px;
+  width: 50%;
+  height: 50vh;
+  height: 25vh;
+  padding: 15px;
+}
+.note-to-user {
+  font-size: 14px;
+  padding-top: 15px;
+  background-color: #B0A59C; 
+}
+form {
+  font-size: 105%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #B0A59C;
+}
+.charName, .realmName {
+  background: #B0A59C;
+}
+.btn1 {
+  background: #9CA6B0;
+  display: block;
+  margin: 2% auto;
+  border-style: solid 1px #000;
+  border-radius: 25px;
+  width: 25%;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.btn1:hover {
+  cursor: pointer;
+}
+/* Article 2 */
+.container2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #E0E6E0;
+  margin: 5%;
+}
+/* Article 3 */
+.container3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #E0E6E0;
+  margin: 2%;
+}
+/* Article 4 */
+.container4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #E0E6E0;
+  margin: 2%;
+}

@@ -5,7 +5,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="./css/mobile-landing-page.css" rel="stylesheet">
-  <link href="./css/mobile-results-page.css" rel="stylesheet">
   <title>Havoc</title>
   <!--Load jQuery-->
   <script   
@@ -16,31 +15,37 @@
 </head>
 <body>
   <header class="page-header">
-    <img src="./images/Havocio2.jpg" alt="havoc.io" class="header-img">
+    <img src="./images/wow-dragonflight.png" alt="wow header image" class="dragonflight-img">
   </header>
   <main>
     <header class="main-header">
-      <h1 class="quote">Unlock your competitive potential</h1>
+      <h1>WoW PvP Stats</h1>
+      <h2>Dragonflight Season 3</h2>
     </header>
-    <section id="containers">
-      <article class="container1">
-        <form>
-          <label for="charName" class="charName">Character Name: </label>
-          <input type="name" id="charName">
-          <label for="realmName" class="realmName">Realm: </label>
-          <input type="name" id="realmName">
-        </form>
-        <button class="btn1">Submit</button>
-      </article>
-      <article class="container2">
-        <h3></h3>
-      </article>
-      <article class="container3">
-        <h3></h3>
-      </article>
-      <article class="container4">
-        <h3></h3>
-      </article>
-    </section>
+    <article class="container">
+      <form>
+        <label for="charName" class="charName">Character Name: </label>
+        <input type="name" id="charName">
+        <label for="realmName" class="realmName">Realm: </label>
+        <input type="name" id="realmName">
+      </form>
+      <button class="btn1">Submit</button>
+      <i class="note-to-user">* If you do not have a WoW account, you can see how the website works
+        by typing in, "cyberflame" under Character Name, "tichondrius" under Realm, and 
+        then clicking the submit button.</i>
+    </article>
+    <article class="container2">
+      <h3></h3>
+    </article>
+    <article class="container3">
+      <h3></h3>
+    </article>
+    <article class="container4">
+      <h3></h3>
+    </article>
+   
   </main>
   <script src="./js/main.js" type="module"></script>
+
+</body>
+</html>
