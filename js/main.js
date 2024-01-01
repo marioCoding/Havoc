@@ -8,7 +8,7 @@ let accessToken = {};
 to the document object. The event being listened for is the "DOMContentLoaded" event, which fires
 when the initial HTML document has been completely loaded and parsed. */
 document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.querySelector(".btn1");
+  const btn = document.querySelector(".btn-search");
   btn.addEventListener("click", getData);
 });
 
@@ -35,7 +35,6 @@ $.ajax({
   },
   success: function(response) {
     // Handle the successful response
-    console.log(response);
     accessToken = response.access_token;
   },
   error: function(error) {
@@ -63,7 +62,7 @@ async function getData(event) {
     scrollTop: $(container2).offset().top
   }, 2000);
 
-/*  This code is making an API request to the Blizzard API to fetch data about a World of
+/*  This code is making a request to the Blizzard API to fetch data about a World of
   Warcraft character's character appearance */
       
       let url0 = `https://us.api.blizzard.com/profile/wow/character/${requestRealmName}/${requestCharName}/appearance?namespace=profile-us&locale=en_US&access_token=${accessToken}`;
@@ -341,3 +340,10 @@ async function getData(event) {
       let response8 = await fetch(url8);
       let pvpHistoryData = await response8.json();
 }
+
+
+
+// Today's to-do list:
+// 1. Style the radio forms
+// 2. Create a local storage for the votes
+

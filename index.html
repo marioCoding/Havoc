@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./css/mobile-landing-page.css" rel="stylesheet">
+  <link href="./css/styles.css" rel="stylesheet">
   <title>Havoc</title>
   <!--Load jQuery-->
   <script   
@@ -23,13 +23,13 @@
       <h2>Dragonflight Season 3</h2>
     </header>
     <article class="container">
-      <form>
+      <form class="search-form">
         <label for="charName" class="charName">Character Name: </label>
         <input type="name" id="charName">
         <label for="realmName" class="realmName">Realm: </label>
         <input type="name" id="realmName">
       </form>
-      <button class="btn1">Submit</button>
+      <button class="btn-search">Submit</button>
       <i class="note-to-user">* If you do not have a WoW account, you can see how the website works
         by typing in, "cyberflame" under Character Name, "tichondrius" under Realm, and 
         then clicking the submit button.</i>
@@ -43,9 +43,132 @@
     <article class="container4">
       <h3></h3>
     </article>
-   
+    <section class="radio-forms">
+      <article class="which-class-do-you-main">
+        <h3>Which class do you main?</h3>
+        <form class="class-form">
+          <input type="radio" id="death-knight" name="class" value="death-knight">
+          <label for="death-knight">Death Knight</label><br>
+          <meter id="meter-death-knight" value="0" min="0" max="10"></meter><br>
+
+          <input type="radio" id="demon-hunter" name="class" value="demon-hunter">
+          <label for="demon-hunter">Demon Hunter</label><br>
+          <meter id="meter-demon-hunter" value="0" min="0" max="10"></meter><br>
+
+          <input type="radio" id="druid" name="class" value="druid">
+          <label for="javascript">Druid</label><br>
+          <meter id="meter-druid" value="0" min="0" max="10"></meter><br>
+
+          <input type="radio" id="evoker" name="class" value="evoker">
+          <label for="evoker">Evoker</label><br>
+          <meter id="meter-evoker" value="0" min="0" max="10"></meter><br>
+
+          <input type="radio" id="hunter" name="class" value="hunter">
+          <label for="hunter">Hunter</label><br>
+          <meter id="meter-hunter" value="0" min="0" max="10"></meter><br>
+
+          <input type="radio" id="mage" name="class" value="mage">
+          <label for="mage">Mage</label><br>
+          <meter id="meter-mage" value="0" min="0" max="10"></meter><br>
+
+          <input type="radio" id="monk" name="class" value="monk">
+          <label for="monk">Monk</label><br>
+          <meter id="meter-monk" value="0" min="0" max="10"></meter><br>
+
+          <input type="radio" id="paladin" name="class" value="paladin">
+          <label for="paladin">Paladin</label><br>
+          <meter id="meter-paladin" value="0" min="0" max="10"></meter><br>
+
+          <input type="radio" id="priest" name="class" value="priest">
+          <label for="priest">Priest</label><br>
+          <meter id="meter-priest" value="0" min="0" max="10"></meter><br>
+
+          <input type="radio" id="rogue" name="class" value="rogue">
+          <label for="rogue">Rogue</label><br>
+          <meter id="meter-rogue" value="0" min="0" max="10"></meter><br>
+
+          <input type="radio" id="shaman" name="class" value="shaman">
+          <label for="shaman">Shaman</label><br>
+          <meter id="meter-shaman" value="0" min="0" max="10"></meter><br>
+
+          <input type="radio" id="warlock" name="class" value="warlock">
+          <label for="warlock">Warlock</label><br>
+          <meter id="meter-warlock" value="0" min="0" max="10"></meter><br>
+
+          <input type="radio" id="warrior" name="class" value="warrior">
+          <label for="warrior">Warrior</label><br>
+          <meter id="meter-warrior" value="0" min="0" max="10"></meter><br>
+        </form>
+        <button class="btn-class">Submit</button>
+      </article>
+      <article class="when-did-you-start-playing">
+        <h3>When did you start playing WoW?</h3>
+        <form class="expansion-form">
+          <input type="radio" id="vanilla" name="expansion" value="vanilla">
+          <label for="vanilla">Vanilla</label><br>
+          <meter id="meter-vanilla" value="0" min="0" max="10"></meter><br>
+          
+          <input type="radio" id="burning-crusade" name="expansion" value="burning-crusade">
+          <label for="burning-crusade">Burning Crusade</label><br>
+          <meter id="meter-burning-crusade" value="0" min="0" max="10"></meter><br>
+          
+          <input type="radio" id="wrath" name="expansion" value="wrath">
+          <label for="wrath">Wrath of the Lich King</label><br>
+          <meter id="meter-wrath-of-the-lich-king" value="0" min="0" max="10"></meter><br>
+          
+          <input type="radio" id="cata" name="expansion" value="cata">
+          <label for="cata">Cataclysm</label><br>
+          <meter id="meter-cataclysm" value="0" min="0" max="10"></meter><br>
+          
+          <input type="radio" id="mop" name="expansion" value="mop">
+          <label for="mop">Mists of Pandaria</label><br>
+          <meter id="meter-mists-of-pandaria" value="0" min="0" max="10"></meter><br>
+          
+          <input type="radio" id="wod" name="expansion" value="wod">
+          <label for="wod">Warlods of Draenor</label><br>
+          <meter id="meter-warlords-of-draenor" value="0" min="0" max="10"></meter><br>
+          
+          <input type="radio" id="legion" name="expansion" value="legion">
+          <label for="legion">Legion</label><br>
+          <meter id="meter-legion" value="0" min="0" max="10"></meter><br>
+          
+          <input type="radio" id="bfa" name="expansion" value="bfa">
+          <label for="bfa">Battle for Azeroth</label><br>
+          <meter id="meter-battle-for-azeroth" value="0" min="0" max="10"></meter><br>
+          
+          <input type="radio" id="shadowlands" name="expansion" value="shadowlands">
+          <label for="shadowlands">Shadowlands</label><br>
+          <meter id="meter-shadowlands" value="0" min="0" max="10"></meter><br>
+          
+          <input type="radio" id="dragonflight" name="expansion" value="dragonflight">
+          <label for="dragonflight">Dragonflight</label><br>
+          <meter id="meter-dragonflight" value="0" min="0" max="10"></meter><br>
+        </form>
+        <button class="btn-expansion">Submit</button>
+      </article>
+      <article class="alliance-or-horde">
+        <h3>Alliance or Horde?</h3>
+        <form class="faction-form">
+          <input type="radio" id="alliance" name="faction" value="alliance">
+          <label for="alliance">For the Alliance!</label><br>
+          <meter id="meter-alliance" value="0" min="0" max="10"></meter><br>
+
+          <input type="radio" id="horde" name="faction" value="horde">
+          <label for="horde">For the Horde!</label><br>
+          <meter id="meter-horde" value="0" min="0" max="10"></meter><br>
+
+          <input type="radio" id="neutral" name="faction" value="neutral">
+          <label for="neutral">I have too many alts and I don't know anymore</label><br>
+          <meter id="meter-neutral" value="0" min="0" max="10"></meter><br>
+        </form>
+        <button class="btn-faction">Submit</button>
+      </article>
+    </section>
   </main>
   <script src="./js/main.js" type="module"></script>
-
+  <script src="./js/votes.js" type="module"></script>
 </body>
+<footer>
+  <p>Created by: <a href="github.com/marioCoding">hotpocket2077</a></p>
+</footer>
 </html>
