@@ -98,8 +98,8 @@ function classCounter(event) {
     meterRogue.innerHTML = counterRogue;
   } else if (voteShaman.checked) {
     counterShaman++;
-    meterRogue.value = counterShaman;
-    meterRogue.innerHTML = counterShaman;
+    meterShaman.value = counterShaman;
+    meterShaman.innerHTML = counterShaman;
   } else if (voteWarlock.checked) {
     counterWarlock++;
     meterWarlock.value = counterWarlock;
@@ -130,12 +130,12 @@ function expansionCounter(event) {
   // define variables for the expansion meters
   const meterVanilla = document.getElementById("meter-vanilla");
   const meterBurningCrusade = document.getElementById("meter-burning-crusade");
-  const meterWrathOfTheLichKing = document.getElementById("meter-wrath");
-  const meterCataclysm = document.getElementById("meter-cata");
-  const meterMistsOfPandaria = document.getElementById("meter-mop");
-  const meterWarlordsOfDraenor = document.getElementById("meter-wod");
+  const meterWrathOfTheLichKing = document.getElementById("meter-wrath-of-the-lich-king");
+  const meterCataclysm = document.getElementById("meter-cataclysm");
+  const meterMistsOfPandaria = document.getElementById("meter-mists-of-pandaria");
+  const meterWarlordsOfDraenor = document.getElementById("meter-warlords-of-draenor");
   const meterLegion = document.getElementById("meter-legion");
-  const meterBattleForAzeroth = document.getElementById("meter-bfa");
+  const meterBattleForAzeroth = document.getElementById("meter-battle-for-azeroth");
   const meterShadowlands = document.getElementById("meter-shadowlands");
   const meterDragonflight = document.getElementById("meter-dragonflight");
 

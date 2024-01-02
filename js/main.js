@@ -2,6 +2,7 @@
 const container2 = document.querySelector(".container2");
 const container3 = document.querySelector(".container3");
 const container4 = document.querySelector(".container4");
+const container5 = document.querySelector(".container5");
 let accessToken = {};
 
 /* The code `document.addEventListener("DOMContentLoaded", () => { ... })` is adding an event listener
@@ -54,8 +55,8 @@ async function getData(event) {
         characterName: charName.value,
         realm: realm.value
       };
-      let requestCharName = request.characterName;
-      let requestRealmName = request.realm;
+      let requestCharName = request.characterName.toLowerCase();
+      let requestRealmName = request.realm.toLowerCase();
 
 // Scroll the webpage smoothly to the result containers after the submit button is clicked
   $('html, body').animate({
@@ -155,8 +156,6 @@ async function getData(event) {
         ratingElement.style.fontFamily = "warcraft, sans-serif";
         ratingElement.style.fontSize = "150%";
         ratingElement.style.margin = "0 0 2% 0";
-      
-      
 
         // Container Section 4 - Season Match Statistics
         const statsElement1Title = document.createElement("h4");
@@ -281,6 +280,7 @@ async function getData(event) {
         shuffleTitle2.innerHTML = `${spec2} rating: `;
 
         // Make reference to the HTML containers where the info will be displayed
+        container4.innerHTML = " ";
         container4.appendChild(shuffleTitle2);
         container4.appendChild(shuffleRating2);
         container4.appendChild(shufflePlayed2);
@@ -318,6 +318,7 @@ async function getData(event) {
         shuffleTitle3.innerHTML = `${spec3} rating: `;
 
         // Make reference to the HTML containers where the info will be displayed
+        container4.innerHTML = " ";
         container4.appendChild(shuffleTitle3);
         container4.appendChild(shuffleRating3);
         container4.appendChild(shufflePlayed3);
@@ -333,6 +334,40 @@ async function getData(event) {
       let url7 = `https://us.api.blizzard.com/profile/wow/character/${requestRealmName}/${requestCharName}/achievements?namespace=profile-us&locale=en_US&access_token=${accessToken}`;   
       let response7 = await fetch(url7);
       let achievementsData = await response7.json();
+      try {
+        // Grab achievement data from JSON file
+        let wrathfulGladiator;
+
+        // Create HTML elements
+        const achievementsHeader = document.createElement("h3");
+        const achievementsElement = document.createElement("p");
+
+        // Search the JSON file for the achievement name
+        for (let i = 0; i < achievementsData.achievements.length; i++) {
+          if (achievementsData.achievements[i].achievement.name === "Wrathful Gladiator") {
+            wrathfulGladiator = achievementsData.achievements[i].achievement.name;
+          } else {
+            wrathfulGladiator = `${requestCharName} is not a Wrathful Gladiator.`;
+          }
+        }
+
+        // Create a condition that will display achievementsHeader if the character has the 'Gladiator' achievement
+
+        // Give HTML elements the JSON data
+        achievementsHeader.innerHTML = "Gladiator Titles";
+        achievementsElement.innerText = wrathfulGladiator;
+
+        // Make reference to the HTML containers where the info will be displayed
+        container5.innerHTML = " ";
+        container5.appendChild(achievementsHeader);
+        container5.appendChild(achievementsElement);
+
+      } catch {
+          err => console.error("oops! error with your glad titles container.", err.message);
+      }
+
+
+      
 
   /* This code is making an HTTP request to the Blizzard API to fetch data about a World of Warcraft
   character's personal rating history. */
@@ -344,6 +379,5 @@ async function getData(event) {
 
 
 // Today's to-do list:
-// 1. Style the radio forms
-// 2. Create a local storage for the votes
+// fetch API endpoints for character's gladiator titles
 

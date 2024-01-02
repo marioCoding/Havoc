@@ -61,7 +61,7 @@ h2 {
   margin: auto;
   background-color: #B0A59C;
   border: 1px solid #000;
-  border-radius: 25px;
+  border-radius: 0 0 25px 25px;
   width: 50%;
   height: 50vh;
   height: 25vh;
@@ -124,6 +124,14 @@ h2 {
 }
 
 /* Radio forms section */
+.radio-forms-title {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
 .radio-forms {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -133,25 +141,51 @@ h2 {
   margin: 2%;
 }
 
+.class-title {
+  text-align: center;
+}
 .which-class-do-you-main {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: left;
   flex-direction: column;
+  padding: 5%;
+  border-radius: 0 0 25px 25px;
+  background-color: #B0A59C;
+  border: 1px solid #000;
+}
+.class-form {
+  padding: 5%;
 }
 
-.when-did-you-start-playing {
+.expansion-title {
   text-align: center;
+}
+.when-did-you-start-playing {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 5%;
+  border-radius: 0 0 25px 25px;
+  background-color: #B0A59C;
+  border: 1px solid #000;
+}
+.expansion-form {
+  padding: 5%;
 }
 
 .alliance-or-horde {
   display: flex;
-  justify-content: center;
+  justify-content: top;
   align-items: center;
   flex-direction: column;
+  padding: 5%;
+  border-radius: 0 0 25px 25px;
+  background-color: #B0A59C;
+  border: 1px solid #000;
+}
+.faction-form {
+  padding: 5%;
 }
 
 /* Footer */
