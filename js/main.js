@@ -3,6 +3,8 @@ const container2 = document.querySelector(".container2");
 const container3 = document.querySelector(".container3");
 const container4 = document.querySelector(".container4");
 const container5 = document.querySelector(".container5");
+const container6 = document.querySelector(".container6");
+const container7 = document.querySelector(".container7");
 let accessToken = {};
 
 /* The code `document.addEventListener("DOMContentLoaded", () => { ... })` is adding an event listener
@@ -107,7 +109,7 @@ async function getData(event) {
       const avatarElement = document.createElement("img");
       let avatarName = await avatarData.character.name;
       let avatarRealm = await avatarData.character.realm.name;
-      let avatarURL = await avatarData.assets[2].value;
+      let avatarURL = await avatarData.assets[1].value;
       avatarElement.src = avatarURL;
 
       // Style container 1
@@ -119,11 +121,12 @@ async function getData(event) {
       avatarSubHeader.style.fontFamily = "warcraft, sans-serif";
       avatarSubHeader.style.fontSize = "200%";
       avatarSubHeader.style.background = "#9CA6B0";
-      avatarElement.style.width = "100%";
+      avatarElement.style.width = "80%";
       avatarElement.style.background = "black";
       avatarElement.style.margin = "5%";
       avatarElement.style.borderRadius = "50px";
       avatarElement.style.borderStyle = "inset";
+    
 
       // make reference to the html containers where the info will be displayed
       container2.innerHTML = " ";
@@ -139,12 +142,12 @@ async function getData(event) {
   
       let url3 = `https://us.api.blizzard.com/profile/wow/character/${requestRealmName}/${requestCharName}/pvp-bracket/3v3?namespace=profile-us&locale=en_US&access_token=${accessToken}`;
       let response3 = await fetch(url3);
-      let pvpData = await response3.json();
+      let arena3sData = await response3.json();
       try {
         // Container Section 3 - Rating
         const ratingHeader = document.createElement("h3");
         const ratingElement = document.createElement("p");
-        let ratingData = await pvpData.rating;
+        let ratingData = await arena3sData.rating;
         ratingElement.innerText = ratingData;
         // Style container 3
         ratingHeader.innerHTML = "3v3 Rating";
@@ -165,9 +168,9 @@ async function getData(event) {
         const statsElement3Title = document.createElement("h4");
         const statsElement3 = document.createElement("p");
         // Fetch API endpoints
-        let gamesPlayed = await pvpData.season_match_statistics.played;
-        let gamesWon = await pvpData.season_match_statistics.won;
-        let gamesLost = await pvpData.season_match_statistics.lost;
+        let gamesPlayed = await arena3sData.season_match_statistics.played;
+        let gamesWon = await arena3sData.season_match_statistics.won;
+        let gamesLost = await arena3sData.season_match_statistics.lost;
         // Add style to container 4
         statsElement1Title.innerHTML = "Games played: ";
         statsElement1Title.style.background = "#9CA6B0";
@@ -198,6 +201,129 @@ async function getData(event) {
         err => console.error("oops!", err.message);
       }
 
+// Make a request to the Blizzard API to fetch data about a World of Warcraft character's 2v2 rating
+      let url9 = `https://us.api.blizzard.com/profile/wow/character/${requestRealmName}/${requestCharName}/pvp-bracket/2v2?namespace=profile-us&locale=en_US&access_token=${accessToken}`;
+      let response9 = await fetch(url9);
+      let arena2sData = await response9.json();
+
+      try {
+        // Container Section 6 - 2v2 Rating
+        const ratingHeader2 = document.createElement("h3");
+        const ratingElement2 = document.createElement("p");
+        let ratingData2 = await arena2sData.rating;
+        ratingElement2.innerText = ratingData2;
+        // Style container 6
+        ratingHeader2.innerHTML = "2v2 Rating";
+        ratingHeader2.style.background = "#E0F6F6";
+        ratingHeader2.style.padding = "15px 50px";
+        ratingHeader2.style.margin = "2% 0";
+        ratingHeader2.style.border = "2.5px solid black";
+        ratingHeader2.style.borderRadius = "0 0 15px 15px";
+        ratingElement2.style.fontFamily = "warcraft, sans-serif";
+        ratingElement2.style.fontSize = "150%";
+        ratingElement2.style.margin = "0 0 2% 0";
+
+        // Container Section 6 - Season Match Statistics
+        const statsElement4Title = document.createElement("h4");
+        const statsElement4 = document.createElement("p");
+        const statsElement5Title = document.createElement("h4");
+        const statsElement5 = document.createElement("p");
+        const statsElement6Title = document.createElement("h4");
+        const statsElement6 = document.createElement("p");
+        // Fetch API endpoints
+        let gamesPlayed2 = await arena2sData.season_match_statistics.played;
+        let gamesWon2 = await arena2sData.season_match_statistics.won;
+        let gamesLost2 = await arena2sData.season_match_statistics.lost;
+        // Add style to container 6
+        statsElement4Title.innerHTML = "Games played: ";
+        statsElement4Title.style.background = "#9CA6B0";
+        statsElement4.innerText = gamesPlayed2;
+        statsElement4.style.background = "#9CA6B0";
+        statsElement5Title.innerHTML = "Won: ";
+        statsElement5Title.style.background = "#9CA6B0";
+        statsElement5.innerText = gamesWon2;
+        statsElement5.style.background = "#9CA6B0"; 
+        statsElement6Title.innerHTML = "Lost: ";
+        statsElement6Title.style.background = "#9CA6B0";
+        statsElement6.innerText = gamesLost2;
+        statsElement6.style.background = "#9CA6B0";
+
+        // Make reference to the HTML containers where the info will be displayed
+        container6.innerHTML = " ";
+        container6.appendChild(ratingHeader2);
+        container6.appendChild(ratingElement2);
+        container6.appendChild(statsElement4Title);
+        container6.appendChild(statsElement4);
+        container6.appendChild(statsElement5Title);
+        container6.appendChild(statsElement5);
+        container6.appendChild(statsElement6Title);
+        container6.appendChild(statsElement6);
+
+      } catch {
+        err => console.error("oops! sonething went wrongh with your 2v2 data fetch", err.message);
+      }
+
+// Make a request to the Blizzard API to fetch data about a World of Warcraft character's rbg rating
+      let url10 = `https://us.api.blizzard.com/profile/wow/character/${requestRealmName}/${requestCharName}/pvp-bracket/rbg?namespace=profile-us&locale=en_US&access_token=${accessToken}`;
+      let response10 = await fetch(url10);
+      let rbgData = await response10.json();
+
+      try {
+        // Container Section 7 - RBG Rating
+        const ratingHeader3 = document.createElement("h3");
+        const ratingElement3 = document.createElement("p");
+        let ratingData3 = await rbgData.rating;
+        ratingElement3.innerText = ratingData3;
+        // Style container 7
+        ratingHeader3.innerHTML = "RBG Rating";
+        ratingHeader3.style.background = "#E0F6F6";
+        ratingHeader3.style.padding = "15px 50px";
+        ratingHeader3.style.margin = "2% 0";
+        ratingHeader3.style.border = "2.5px solid black";
+        ratingHeader3.style.borderRadius = "0 0 15px 15px";
+        ratingElement3.style.fontFamily = "warcraft, sans-serif";
+        ratingElement3.style.fontSize = "150%";
+        ratingElement3.style.margin = "0 0 2% 0";
+        
+        // Container Section 7 - Season Match Statistics
+        const statsElement7Title = document.createElement("h4");
+        const statsElement7 = document.createElement("p");
+        const statsElement8Title = document.createElement("h4");
+        const statsElement8 = document.createElement("p");
+        const statsElement9Title = document.createElement("h4");
+        const statsElement9 = document.createElement("p");
+        // Fetch API endpoints
+        let gamesPlayed3 = await rbgData.season_match_statistics.played;
+        let gamesWon3 = await rbgData.season_match_statistics.won;
+        let gamesLost3 = await rbgData.season_match_statistics.lost;
+        // Add style to container 7
+        statsElement7Title.innerHTML = "Games played: ";
+        statsElement7Title.style.background = "#9CA6B0";
+        statsElement7.innerText = gamesPlayed3;
+        statsElement7.style.background = "#9CA6B0";
+        statsElement8Title.innerHTML = "Won: ";
+        statsElement8Title.style.background = "#9CA6B0";
+        statsElement8.innerText = gamesWon3;
+        statsElement8.style.background = "#9CA6B0";
+        statsElement9Title.innerHTML = "Lost: ";
+        statsElement9Title.style.background = "#9CA6B0";
+        statsElement9.innerText = gamesLost3;
+        statsElement9.style.background = "#9CA6B0";
+        statsElement9.style.marginBottom = "2%";
+        // Make reference to the HTML containers where the info will be displayed
+        container7.innerHTML = " ";
+        container7.appendChild(ratingHeader3);
+        container7.appendChild(ratingElement3);
+        container7.appendChild(statsElement7Title);
+        container7.appendChild(statsElement7);
+        container7.appendChild(statsElement8Title);
+        container7.appendChild(statsElement8);
+        container7.appendChild(statsElement9Title);
+        container7.appendChild(statsElement9);
+      } catch {
+        err => console.error("oops! something went wrong with your rbg data fetch", err.message);
+      }
+
 /* The following three API requests to the Blizzard API fetch data about a World of
   Warcraft character's solo shuffle statistics. */
         
@@ -207,12 +333,12 @@ async function getData(event) {
           let s2 = spec2.toLowerCase();
           let s3 = spec3.toLowerCase();
 
+
       let url4 = `https://us.api.blizzard.com/profile/wow/character/${requestRealmName}/${requestCharName}/pvp-bracket/shuffle-${cClass}-${s1}?namespace=profile-us&locale=en_US&access_token=${accessToken}`;
       let response4 = await fetch(url4);
       let shuffleData1 = await response4.json();
       try {
         // Create HTML elements
-        const soloShuffleTitle = document.createElement("h3");
         const shuffleTitle1 = document.createElement("h3");
         const shuffleRating1 = document.createElement("h4");
         const shufflePlayed1 = document.createElement("p");
@@ -226,7 +352,7 @@ async function getData(event) {
         let shuffleRoundsLost1 = await shuffleData1.season_round_statistics.lost;
         
         // Give HTML elements the JSON data
-        soloShuffleTitle.innerHTML = "Solo Shuffle Rating";
+        
         soloShuffleTitle.style.background = "#E0F6F6";
         soloShuffleTitle.style.padding = "15px 50px";
         soloShuffleTitle.style.margin = "2% 0";
@@ -242,7 +368,6 @@ async function getData(event) {
 
         // Make reference to the HTML containers where the info will be displayed
         container4.innerHTML = " ";
-        container4.appendChild(soloShuffleTitle);
         container4.appendChild(shuffleTitle1);
         container4.appendChild(shuffleRating1);
         container4.appendChild(shufflePlayed1);
@@ -336,31 +461,141 @@ async function getData(event) {
       let achievementsData = await response7.json();
       try {
         // Grab achievement data from JSON file
-        let wrathfulGladiator;
+        let gladiator,
+            mercilessGladiator,
+            vengefulGladiator,
+            brutalGladiator,
+            deadlyGladiator,
+            furiousGladiator,
+            relentlessGladiator,
+            wrathfulGladiator,
+            viciousGladiator,
+            ruthlessGladiator,
+            cataclysmicGladiator,
+            malevolentGladiator,
+            tyrannicalGladiator,
+            grievousGladiator,
+            pridefulGladiator,
+            primalGladiator,
+            wildGladiator,
+            warmongeringGladiator,
+            vindictiveGladiator;
+        let isGlad = false;
 
         // Create HTML elements
         const achievementsHeader = document.createElement("h3");
-        const achievementsElement = document.createElement("p");
+        const achievementsMercilessGladiator = document.createElement("p");
+        const achievementsVengefulGladiator = document.createElement("p"); 
+        const achievementsBrutalGladiator = document.createElement("p");
+        const achievementsDeadlyGladiator = document.createElement("p");
+        const achievementsFuriousGladiator = document.createElement("p");
+        const achievementsRelentlessGladiator = document.createElement("p");
+        const achievementsWrathfulGladiator = document.createElement("p");
+        const achievementsViciousGladiator = document.createElement("p");
+        const achievementsRuthlessGladiator = document.createElement("p");
+        const achievementsCataclysmicGladiator = document.createElement("p");
+        const achievementsMalevolentGladiator = document.createElement("p");
+        const achievementsTyrannicalGladiator = document.createElement("p");
+        const achieveGrievousGladiator = document.createElement("p");
+        const achievementsPridefulGladiator = document.createElement("p");
+        const achievementsPrimalGladiator = document.createElement("p");
+        const achievementsWildGladiator = document.createElement("p");
+        const achievementsWarmongeringGladiator = document.createElement("p");
+        const achievementsVindictiveGladiator = document.createElement("p");
+
+   
 
         // Search the JSON file for the achievement name
+      
         for (let i = 0; i < achievementsData.achievements.length; i++) {
           if (achievementsData.achievements[i].achievement.name === "Wrathful Gladiator") {
-            wrathfulGladiator = achievementsData.achievements[i].achievement.name;
+            wrathfulGladiator = await achievementsData.achievements[i].achievement.name;
           } else {
             wrathfulGladiator = `${requestCharName} is not a Wrathful Gladiator.`;
           }
         }
-
-        // Create a condition that will display achievementsHeader if the character has the 'Gladiator' achievement
+          /*
+          if (achievementsData.achievements[i].achievement.name === "Vengeful Gladiator") {
+            vengefulGladiator = achievementsData.achievements[i].achievement.name;
+          } 
+          if (achievementsData.achievements[i].achievement.name === "Brutal Gladiator") {
+            brutalGladiator = achievementsData.achievements[i].achievement.name;
+          } 
+          if (achievementsData.achievements[i].achievement.name === "Deadly Gladiator") {
+            deadlyGladiator = achievementsData.achievements[i].achievement.name;
+          } 
+          if (achievementsData.achievements[i].achievement.name === "Furious Gladiator") {
+            furiousGladiator = achievementsData.achievements[i].achievement.name;
+          } 
+          if (achievementsData.achievements[i].achievement.name === "Relentless Gladiator") {
+            relentlessGladiator = achievementsData.achievements[i].achievement.name;
+          } 
+          if (achievementsData.achievements[i].achievement.name === "Wrathful Gladiator") {
+            wrathfulGladiator = achievementsData.achievements[i].achievement.name;
+          } 
+          if (achievementsData.achievements[i].achievement.name === "Vicious Gladiator") {
+            viciousGladiator = achievementsData.achievements[i].achievement.name;
+          } 
+          if (achievementsData.achievements[i].achievement.name === "Ruthless Gladiator") {
+            ruthlessGladiator = achievementsData.achievements[i].achievement.name;
+          } 
+          if (achievementsData.achievements[i].achievement.name === "Cataclysmic Gladiator") {
+            cataclysmicGladiator = achievementsData.achievements[i].achievement.name;
+          } 
+          if (achievementsData.achievements[i].achievement.name === "Malevolent Gladiator") {
+            malevolentGladiator = achievementsData.achievements[i].achievement.name;
+          } 
+          if (achievementsData.achievements[i].achievement.name === "Tyrannical Gladiator") {
+            tyrannicalGladiator = achievementsData.achievements[i].achievement.name;
+          } 
+          if (achievementsData.achievements[i].achievement.name === "Grievous Gladiator") {
+            grievousGladiator = achievementsData.achievements[i].achievement.name;
+          } 
+          if (achievementsData.achievements[i].achievement.name === "Prideful Gladiator") {
+            pridefulGladiator = achievementsData.achievements[i].achievement.name;
+          } 
+          if (achievementsData.achievements[i].achievement.name === "Primal Gladiator") {
+            primalGladiator = achievementsData.achievements[i].achievement.name;
+          } 
+          if (achievementsData.achievements[i].achievement.name === "Wild Gladiator") {
+            wildGladiator = achievementsData.achievements[i].achievement.name;
+          } 
+          if (achievementsData.achievements[i].achievement.name === "Warmongering Gladiator") {
+            warmongeringGladiator = achievementsData.achievements[i].achievement.name;
+          } 
+          if (achievementsData.achievements[i].achievement.name === "Vindictive Gladiator") {
+            vindictiveGladiator = achievementsData.achievements[i].achievement.name;
+          } else {
+            vindictiveGladiator = `${requestCharName} is not a Vindictive Gladiator.`;
+          }
+          */
+        
 
         // Give HTML elements the JSON data
         achievementsHeader.innerHTML = "Gladiator Titles";
-        achievementsElement.innerText = wrathfulGladiator;
-
+        achievementsWrathfulGladiator.innerText = wrathfulGladiator;
+    
         // Make reference to the HTML containers where the info will be displayed
         container5.innerHTML = " ";
         container5.appendChild(achievementsHeader);
-        container5.appendChild(achievementsElement);
+        container5.appendChild(achievementsMercilessGladiator);
+        container5.appendChild(achievementsVengefulGladiator);
+        container5.appendChild(achievementsBrutalGladiator); 
+        container5.appendChild(achievementsDeadlyGladiator);
+        container5.appendChild(achievementsFuriousGladiator);
+        container5.appendChild(achievementsRelentlessGladiator);
+        container5.appendChild(achievementsWrathfulGladiator);
+        container5.appendChild(achievementsViciousGladiator);
+        container5.appendChild(achievementsRuthlessGladiator);
+        container5.appendChild(achievementsCataclysmicGladiator);
+        container5.appendChild(achievementsMalevolentGladiator);
+        container5.appendChild(achievementsTyrannicalGladiator);
+        container5.appendChild(achieveGrievousGladiator);
+        container5.appendChild(achievementsPridefulGladiator);
+        container5.appendChild(achievementsPrimalGladiator);
+        container5.appendChild(achievementsWildGladiator);
+        container5.appendChild(achievementsWarmongeringGladiator);
+        container5.appendChild(achievementsVindictiveGladiator);
 
       } catch {
           err => console.error("oops! error with your glad titles container.", err.message);

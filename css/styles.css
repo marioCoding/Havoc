@@ -95,7 +95,8 @@ h2 {
 .btn1:hover {
   cursor: pointer;
 }
-/* Article 2 */
+
+/* Display Avatar - Article 2 */
 .container2 {
   display: flex;
   justify-content: center;
@@ -104,7 +105,14 @@ h2 {
   background-color: #E0E6E0;
   margin: 5%;
 }
-/* Article 3 */
+
+/* PvP Stats - Section 1 */
+.pvp-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* 3v3 Stats - Article 3 */
 .container3 {
   display: flex;
   justify-content: center;
@@ -113,7 +121,7 @@ h2 {
   background: #E0E6E0;
   margin: 2%;
 }
-/* Article 4 */
+/* Solo Shuffle Stats - Article 4 */
 .container4 {
   display: flex;
   justify-content: center;
@@ -121,6 +129,11 @@ h2 {
   flex-direction: column;
   background: #E0E6E0;
   margin: 2%;
+}
+
+/* Gladiator Titles - Article 5 */
+.container5 {
+  display: hidden;
 }
 
 /* Radio forms section */
